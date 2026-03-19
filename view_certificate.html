@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Certificate Details</h2>
+    <div class="certificate-details">
+        <p><strong>Title:</strong> {{ certificate.title }}</p>
+        <p><strong>Recipient:</strong> {{ certificate.recipient_name }}</p>
+        <p><strong>Description:</strong> {{ certificate.description }}</p>
+        <p><strong>Issued Date:</strong> {{ certificate.issued_date.strftime('%Y-%m-%d') }}</p>
+        <p><strong>Blockchain Hash:</strong> {{ certificate.blockchain_hash }}</p>
+        <div class="qr-code">
+            <img src="data:image/png;base64,{{ certificate.qr_code }}" alt="QR Code">
+        </div>
+    </div>
+</div>
+{% endblock %}

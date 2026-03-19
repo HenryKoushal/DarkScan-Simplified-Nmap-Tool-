@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Dashboard</h1>
+<p>Welcome, {{ current_user.username }}!</p>
+
+<div class="card">
+    <h2>Your Certificates</h2>
+    {% if certificates %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Recipient</th>
+                    <th>Issued Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for certificate in certificates %}
+                <tr>
+                    <td>{{ certificate.title }}</td>
+                    <td>{{ certificate.recipient_name }}</td>
+                    <td>{{ certificate.issued_date.strftime('%Y-%m-%d') }}</td>
+                    <td>
+                        <a href="{{ url_for('view_certificate', certificate_id=certificate.id) }}" class="btn btn-sm btn-primary">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You haven't issued any certificates yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    {% if valid %}
+        <div class="alert alert-success">
+            <h3>Certificate is valid!</h3>
+            <p><strong>Sender:</strong> {{ transaction.sender }}</p>
+            <p><strong>Recipient:</strong> {{ transaction.recipient }}</p>
+            <p><strong>Certificate Hash:</strong> {{ transaction.certificate_hash }}</p>
+            <p><strong>Timestamp:</strong> {{ transaction.timestamp }}</p>
+        </div>
+    {% else %}
+        <div class="alert alert-danger">
+            Certificate is invalid or not found.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
